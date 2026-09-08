@@ -17,6 +17,8 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+  html { scroll-behavior: smooth; }
+
   body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
     background: var(--paper);
@@ -332,6 +334,84 @@
     .why-grid { grid-template-columns: 1fr; }
     .visit-grid { grid-template-columns: 1fr; }
   }
+
+  /* Animations */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  header { transition: box-shadow 0.3s ease; }
+  header.scrolled { box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+
+  .hero-inner > div { opacity: 0; animation: fadeInUp 0.7s ease forwards; }
+  .hero-inner > div:first-child { animation-delay: 0.05s; }
+  .hero-inner > div:last-child { animation-delay: 0.25s; }
+  .hero-inner > div:first-child > * { opacity: 0; animation: fadeInUp 0.6s ease forwards; }
+  .hero-inner > div:first-child > *:nth-child(1) { animation-delay: 0.15s; }
+  .hero-inner > div:first-child > *:nth-child(2) { animation-delay: 0.28s; }
+  .hero-inner > div:first-child > *:nth-child(3) { animation-delay: 0.38s; }
+  .hero-inner > div:first-child > *:nth-child(4) { animation-delay: 0.48s; }
+
+  .logo-mark { animation: fadeIn 0.6s ease; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  a, button { transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease; }
+
+  .btn-primary:hover, .btn-secondary:hover, .call-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  }
+
+  .btn-primary:active, .btn-secondary:active, .call-btn:active { transform: translateY(0); }
+
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0; bottom: -4px;
+    width: 0; height: 2px;
+    background: var(--mango);
+    transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .cat-card { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+  .cat-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+    border-color: var(--green-mid);
+  }
+
+  .cat-icon { transition: transform 0.3s ease; }
+  .cat-card:hover .cat-icon { transform: scale(1.1) rotate(-4deg); }
+
+  .why-item { transition: transform 0.25s ease; }
+  .why-item:hover { transform: translateY(-4px); }
+
+  .hero-basket { transition: transform 0.3s ease; }
+  .hero-basket:hover { transform: translateY(-4px); }
+
+  .basket-row span:last-child {
+    color: var(--green-mid);
+    font-weight: 600;
+    animation: fadeIn 1s ease;
+  }
+
+  .social-icons svg, .logo-icon { transition: transform 0.3s ease; }
+  .social-icons a:hover svg { transform: scale(1.15) rotate(6deg); }
+  .logo-mark:hover .logo-icon { transform: rotate(8deg) scale(1.05); }
 </style>
 </head>
 <body>
@@ -392,33 +472,33 @@
 
 <section id="categories">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow-free">What we stock</div>
       <h2>Everything on one shelf</h2>
       <p>A full range of daily needs, all under one roof, so you're not making three stops for one meal.</p>
     </div>
     <div class="categories">
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="cat-icon">Vg</div>
         <h3>Fruits &amp; Vegetables</h3>
         <p>Fresh stock brought in daily.</p>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="cat-icon">Gr</div>
         <h3>Grocery &amp; Staples</h3>
         <p>Rice, flour, pulses, cooking oil, spices.</p>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="cat-icon">Dy</div>
         <h3>Dairy &amp; Bakery</h3>
         <p>Milk, eggs, bread, and daily bakery items.</p>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="cat-icon">Hh</div>
         <h3>Household Essentials</h3>
         <p>Cleaning supplies, personal care, and more.</p>
       </div>
-      <div class="cat-card">
+      <div class="cat-card reveal">
         <div class="cat-icon">Bk</div>
         <h3>Bakery &amp; Custom Cakes</h3>
         <p>Fresh bakes, plus custom cake orders.</p>
@@ -429,20 +509,20 @@
 
 <section id="reviews" style="background:white; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow-free">What customers say</div>
       <h2>4.3★ from 331+ Google reviews</h2>
     </div>
     <div class="why-grid">
-      <div class="why-item">
+      <div class="why-item reveal">
         <p style="font-size:15px; color:var(--ink); margin-bottom:14px; font-style:italic;">"A solid one-stop shop for household needs — groceries, kitchen items, and a decent range of crockery. Staff are friendly and quick to help."</p>
         <p style="font-size:13.5px; color:#6B6656; font-weight:600;">— Google Review</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal">
         <p style="font-size:15px; color:var(--ink); margin-bottom:14px; font-style:italic;">"Picked up a bakery cake on short notice and it turned out great — good taste, good quality. Would come back for another."</p>
         <p style="font-size:13.5px; color:#6B6656; font-weight:600;">— Google Review</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal">
         <p style="font-size:15px; color:var(--ink); margin-bottom:14px; font-style:italic;">"Been shopping here since it opened — great offers and discounts, and prices stay competitive across the board."</p>
         <p style="font-size:13.5px; color:#6B6656; font-weight:600;">— Google Review</p>
       </div>
@@ -452,22 +532,22 @@
 
 <section id="why" class="why">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow-free">Why locals choose us</div>
       <h2>Been part of Sabzazar for years</h2>
     </div>
     <div class="why-grid">
-      <div class="why-item">
+      <div class="why-item reveal">
         <div class="num">01</div>
         <h3>Open Late</h3>
         <p>Open until midnight, every day — for the things you forgot earlier.</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal">
         <div class="num">02</div>
         <h3>Fair, Fixed Prices</h3>
         <p>No bargaining needed. Clear prices on every shelf.</p>
       </div>
-      <div class="why-item">
+      <div class="why-item reveal">
         <div class="num">03</div>
         <h3>Home Delivery</h3>
         <p>Message us your list on WhatsApp for delivery nearby.</p>
@@ -478,15 +558,15 @@
 
 <section id="visit">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div class="eyebrow-free">Find us</div>
       <h2>Visit the store</h2>
     </div>
     <div class="visit-grid">
-      <div class="map-box">
+      <div class="map-box reveal">
         <iframe src="https://www.google.com/maps?q=Cario+Mart+Sabzazar+Lahore&output=embed" loading="lazy" allowfullscreen></iframe>
       </div>
-      <div>
+      <div class="reveal">
         <div class="info-block">
           <h3>ADDRESS</h3>
           <p class="contact-line">Plot # 16, near PSO Petrol Pump, Sabzazar Block H, Sabzazar Housing Scheme, Lahore</p>
@@ -505,10 +585,10 @@
   </div>
 </section>
 
-<div class="cta-strip">
+<div class="cta-strip reveal">
   <h2>Need something delivered today?</h2>
   <p>Send your list on WhatsApp and we'll get it ready.</p>
-  <a href="https://wa.me/920000000000" class="btn-primary">Message Cario Mart</a>
+  <a href="https://wa.me/923217887752" class="btn-primary">Message Cario Mart</a>
 </div>
 
 <footer>
@@ -531,6 +611,27 @@
     </a>
   </div>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var header = document.querySelector('header');
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 12) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(function (el) { observer.observe(el); });
+  });
+</script>
 
 </body>
 </html>
