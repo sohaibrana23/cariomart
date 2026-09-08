@@ -148,6 +148,25 @@
     display: inline-block;
   }
 
+  .btn-whatsapp, .btn-foodpanda {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 24px;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    color: white;
+  }
+
+  .btn-whatsapp { background: #25D366; }
+  .btn-whatsapp:hover { background: #1EBE5A; }
+
+  .btn-foodpanda { background: #D70F64; }
+  .btn-foodpanda:hover { background: #C00E59; }
+
+  .btn-whatsapp svg, .btn-foodpanda svg { width: 19px; height: 19px; flex-shrink: 0; }
+
   .hero-basket {
     background: var(--paper);
     color: var(--ink);
@@ -369,12 +388,12 @@
 
   a, button { transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease; }
 
-  .btn-primary:hover, .btn-secondary:hover, .call-btn:hover {
+  .btn-primary:hover, .btn-secondary:hover, .call-btn:hover, .btn-whatsapp:hover, .btn-foodpanda:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.18);
   }
 
-  .btn-primary:active, .btn-secondary:active, .call-btn:active { transform: translateY(0); }
+  .btn-primary:active, .btn-secondary:active, .call-btn:active, .btn-whatsapp:active, .btn-foodpanda:active { transform: translateY(0); }
 
   .nav-links a { position: relative; }
   .nav-links a::after {
@@ -455,7 +474,14 @@
       <p>Cario Mart stocks everything from fresh essentials to household goods — one trip, everything you need.</p>
       <p style="font-size:14px; color:var(--mango); font-weight:600; margin-top:-14px; margin-bottom:22px;">★ 4.3 rating from 331+ Google reviews</p>
       <div class="hero-actions">
-        <a href="https://wa.me/923217887752" class="btn-primary">Message on WhatsApp</a>
+        <a href="https://wa.me/923217887752" class="btn-whatsapp">
+          <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.08L2 22l5.05-1.32C8.55 21.5 10.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-.98.09-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.62-4.26-3.79-.12-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.31.66-.31.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.28.02.45-.08.17-.12.28-.24.43-.12.15-.25.33-.36.44-.12.12-.24.25-.11.49.14.24.6 1 1.29 1.62.89.79 1.63 1.03 1.87 1.15.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.11.06.61-.16 1.23z"/></svg>
+          Message on WhatsApp
+        </a>
+        <a href="https://www.foodpanda.pk/shop/jbv2/cario-mart-jbv2" target="_blank" class="btn-foodpanda">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 8h12l-1 12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L6 8z" fill="white"/><path d="M9 8V6a3 3 0 0 1 6 0v2" stroke="white" stroke-width="1.6" fill="none"/></svg>
+          Order Now on foodpanda
+        </a>
         <a href="#visit" class="btn-secondary">Get Directions</a>
       </div>
     </div>
@@ -588,7 +614,10 @@
 <div class="cta-strip reveal">
   <h2>Need something delivered today?</h2>
   <p>Send your list on WhatsApp and we'll get it ready.</p>
-  <a href="https://wa.me/923217887752" class="btn-primary">Message Cario Mart</a>
+  <a href="https://wa.me/923217887752" class="btn-whatsapp" style="justify-content:center;">
+    <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.08L2 22l5.05-1.32C8.55 21.5 10.24 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.24-.45.06-.98.09-1.58-.1-.36-.11-.83-.27-1.42-.53-2.5-1.08-4.13-3.62-4.26-3.79-.12-.17-1.02-1.36-1.02-2.6 0-1.24.65-1.85.88-2.1.22-.25.5-.31.66-.31.17 0 .33 0 .48.01.15.01.36-.06.56.43.22.53.74 1.83.8 1.96.06.13.1.28.02.45-.08.17-.12.28-.24.43-.12.15-.25.33-.36.44-.12.12-.24.25-.11.49.14.24.6 1 1.29 1.62.89.79 1.63 1.03 1.87 1.15.24.12.38.1.52-.06.14-.16.6-.7.76-.94.16-.24.32-.2.54-.12.22.08 1.4.66 1.64.78.24.12.4.18.46.28.06.11.06.61-.16 1.23z"/></svg>
+    Message Cario Mart
+  </a>
 </div>
 
 <footer>
